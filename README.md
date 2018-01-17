@@ -5,7 +5,7 @@
 
 This repo has been set up as a resource for automated testing of QGIS script tools.
 
-`identify_large_geometry_changes.py`: a geoprocessing script to identify changes between two versions of line data
+`script_tools/identify_large_geometry_changes.py`: a geoprocessing script to identify changes between two versions of line data
 
 ### Travis Continuous Integration
 

@@ -7,8 +7,9 @@ branches:
 
 env:
   global:
-      - SCRIPT_DIR=iic
+      - SCRIPT_DIR=script_tools
   matrix:
+      # Run with two version of QGIS
       - QGIS_VERSION_TAG=release PYTHON_EXECUTABLE=python PIP_EXECUTABLE=pip
       - QGIS_VERSION_TAG=master_2 PYTHON_EXECUTABLE=python PIP_EXECUTABLE=pip
 
@@ -17,11 +18,13 @@ before_install:
     - docker tag boundlessgeo/qgis-testing-environment:${QGIS_VERSION_TAG} qgis-testing-environment
 
 install:
+    # Mount the directory where your tests live into a volumen accessible by the container
     - docker run -d --name qgis-testing-environment -v ${TRAVIS_BUILD_DIR}:/tests_directory -e DISPLAY=:99 qgis-testing-environment
     - sleep 10
-    - docker exec qgis-testing-environment sh -c "$PIP_EXECUTABLE install shapely"
+    # Set up QGIS for automated testing
     - docker exec -it qgis-testing-environment sh -c "qgis_setup.sh ${SCRIPT_DIR}"
     - docker exec -it qgis-testing-environment sh -c "cd tests_directory/${SCRIPT_DIR}; ls"
 
 script:
+    # Run test script using qgis_testrunner.sh
     - docker exec -it qgis-testing-environment sh -c "qgis_testrunner.sh ${SCRIPT_DIR}.tests.test_script.run_tests;"
