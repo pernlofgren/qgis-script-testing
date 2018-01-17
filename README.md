@@ -1,9 +1,7 @@
 ## Testing QGIS Scripts
 
 
-[![LICENSE](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/pernlofgren/qgis-script-testing/blob/master/LICENSE)
-
-[![](https://travis-ci.org/pernlofgren/qgis-script-testing.svg?branch=master)](https://travis-ci.org/pernlofgren/qgis-script-testing)
+[![LICENSE](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://github.com/pernlofgren/qgis-script-testing/blob/master/LICENSE) [![](https://travis-ci.org/pernlofgren/qgis-script-testing.svg?branch=master)](https://travis-ci.org/pernlofgren/qgis-script-testing)
 
 This repo has been set up as a resource for automated testing of QGIS script tools.
 
